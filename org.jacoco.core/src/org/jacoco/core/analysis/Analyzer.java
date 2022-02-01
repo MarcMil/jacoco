@@ -131,7 +131,7 @@ public class Analyzer {
 		try {
 			analyzeClass(buffer);
 		} catch (final RuntimeException cause) {
-			throw analyzerError(location, cause);
+			analyzerError(location, cause).printStackTrace();;
 		}
 	}
 
@@ -152,7 +152,7 @@ public class Analyzer {
 		try {
 			buffer = InputStreams.readFully(input);
 		} catch (final IOException e) {
-			throw analyzerError(location, e);
+			analyzerError(location, e).printStackTrace();;
 		}
 		analyzeClass(buffer, location);
 	}
@@ -186,7 +186,7 @@ public class Analyzer {
 		try {
 			detector = new ContentTypeDetector(input);
 		} catch (final IOException e) {
-			throw analyzerError(location, e);
+			analyzerError(location, e).printStackTrace();;
 		}
 		switch (detector.getType()) {
 		case ContentTypeDetector.CLASSFILE:
@@ -272,7 +272,7 @@ public class Analyzer {
 		try {
 			return input.getNextEntry();
 		} catch (final IOException e) {
-			throw analyzerError(location, e);
+			analyzerError(location, e).printStackTrace();;
 		}
 	}
 
@@ -282,7 +282,7 @@ public class Analyzer {
 		try {
 			gzipInputStream = new GZIPInputStream(input);
 		} catch (final IOException e) {
-			throw analyzerError(location, e);
+			analyzerError(location, e).printStackTrace();;
 		}
 		return analyzeAll(gzipInputStream, location);
 	}
@@ -293,7 +293,7 @@ public class Analyzer {
 		try {
 			unpackedInput = Pack200Streams.unpack(input);
 		} catch (final IOException e) {
-			throw analyzerError(location, e);
+			analyzerError(location, e).printStackTrace();;
 		}
 		return analyzeAll(unpackedInput, location);
 	}
