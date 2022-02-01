@@ -131,7 +131,7 @@ public class Analyzer {
 		try {
 			analyzeClass(buffer);
 		} catch (final RuntimeException cause) {
-			analyzerError(location, cause).printStackTrace();;
+			analyzerError(location, cause).printStackTrace();
 		}
 	}
 
