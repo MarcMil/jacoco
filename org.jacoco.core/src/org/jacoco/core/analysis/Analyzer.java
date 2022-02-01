@@ -186,7 +186,7 @@ public class Analyzer {
 		try {
 			detector = new ContentTypeDetector(input);
 		} catch (final IOException e) {
-			analyzerError(location, e).printStackTrace();;
+			throw analyzerError(location, e);
 		}
 		switch (detector.getType()) {
 		case ContentTypeDetector.CLASSFILE:
