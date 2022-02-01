@@ -152,7 +152,7 @@ public class Analyzer {
 		try {
 			buffer = InputStreams.readFully(input);
 		} catch (final IOException e) {
-			analyzerError(location, e).printStackTrace();;
+			throw analyzerError(location, e);
 		}
 		analyzeClass(buffer, location);
 	}
@@ -272,7 +272,7 @@ public class Analyzer {
 		try {
 			return input.getNextEntry();
 		} catch (final IOException e) {
-			analyzerError(location, e).printStackTrace();;
+			throw analyzerError(location, e);
 		}
 	}
 
@@ -282,7 +282,7 @@ public class Analyzer {
 		try {
 			gzipInputStream = new GZIPInputStream(input);
 		} catch (final IOException e) {
-			analyzerError(location, e).printStackTrace();;
+			throw analyzerError(location, e);
 		}
 		return analyzeAll(gzipInputStream, location);
 	}
@@ -293,7 +293,7 @@ public class Analyzer {
 		try {
 			unpackedInput = Pack200Streams.unpack(input);
 		} catch (final IOException e) {
-			analyzerError(location, e).printStackTrace();;
+			throw analyzerError(location, e);
 		}
 		return analyzeAll(unpackedInput, location);
 	}
