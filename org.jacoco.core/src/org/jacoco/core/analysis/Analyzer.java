@@ -111,7 +111,7 @@ public class Analyzer {
 		if ((reader.getAccess() & Opcodes.ACC_SYNTHETIC) != 0) {
 			return;
 		}
-		System.out.println(reader.getClassName() + " has class id " + classId)
+		System.out.println(reader.getClassName() + " has class id " + classId);
 		final ClassVisitor visitor = createAnalyzingVisitor(classId,
 				reader.getClassName());
 		reader.accept(visitor, 0);
